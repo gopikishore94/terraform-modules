@@ -12,4 +12,5 @@ variable "private_cidrs" {
 variable "azs" {}
 variable "public_ip_map" {
   default = "true"
+
 }

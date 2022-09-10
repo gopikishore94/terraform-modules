@@ -1,6 +1,6 @@
 resource "aws_instance" "public_ec2" {
   count                  = var.instance_count
-  ami                    = data.aws_ami.app_ami.id
+  ami                    = var.ami
   instance_type          = var.instance_type
   key_name               = var.key_name
   subnet_id              = element(var.public_subnet_ip, count.index)
@@ -12,7 +12,7 @@ resource "aws_instance" "public_ec2" {
 
 resource "aws_instance" "private_ec2" {
   count                  = var.instance_count
-  ami                    = data.aws_ami.app_ami.id
+  ami                    = var.ami
   instance_type          = var.instance_type
   key_name               = var.key_name
   subnet_id              = element(var.private_subnet_ip, count.index)
