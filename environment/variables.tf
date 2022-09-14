@@ -7,6 +7,12 @@ variable "azs" {}
 variable "private_cidrs" {
   type = list(any)
 }
+variable "sg_name" {
+  default = ""
+}
+variable "sg_description" {
+  default = ""
+}
 variable "vpc_id" {
   default = ""
 }
@@ -34,17 +40,6 @@ variable "private_subnet_id" {
 variable "vpc_security_group_ids" {
   default = ""
 }
-########## SG ###########
-variable "sg_name" {
-  default = ""
-}
-variable "sg_description" {
-  default = ""
-}
-variable "public_from_port" {}
-variable "public_to_port" {}
-variable "public_protocol" {}
-
 ############## lb vars ###############
 variable "target_name" {}
 variable "target_port" {}

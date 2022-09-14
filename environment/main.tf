@@ -7,16 +7,12 @@ module "vpc" {
   azs           = var.azs
 }
 
-module "public_security_group" {
+module "security_group" {
   source         = "../modules/securitygroup"
   sg_name        = var.sg_name
   sg_description = var.sg_description
   vpc_id         = module.vpc.vpc_id
   env            = var.env
-  from_port      = var.public_from_port
-  to_port        = var.public_to_port
-  protocol       = var.public_protocol
-  cidr_blocks    = [module.vpc.vpc_cidr]
 }
 
 module "ec2" {
@@ -28,7 +24,7 @@ module "ec2" {
   key_name               = var.key_name
   public_subnet_id       = module.vpc.public_subnets
   private_subnet_id      = module.vpc.private_subnets
-  vpc_security_group_ids = [module.public_security_group.security_id]
+  vpc_security_group_ids = [module.security_group.security_id]
   env                    = var.env
   ami                    = data.aws_ami.app_ami.id
 }
@@ -48,25 +44,24 @@ module "clb" {
     module.vpc.public_subnets[0],
     module.vpc.public_subnets[1]
   ]
-  security_groups = [module.public_security_group.security_id]
+  security_groups = [module.security_group.security_id]
 }
 module "auto_scaling" {
   source           = "../modules/autoscaling"
   depends_on       = [module.ec2.private_instance_ids]
-  ami_id           = module.ec2.private_instance_ids[0]
+  ami_id           = data.aws_ami.app_ami.id
   asg_name         = var.asg_name
   asg_name_lc      = var.asg_name_lc
   max_size         = var.max_size
   min_size         = var.min_size
   desired_capacity = var.desired_capacity
-  security_groups  = [module.public_security_group.security_id]
-  key_name         = var.key_name
-  env              = var.env
+  security_groups  = [module.security_group.security_id]
   vpc_zone_identifier = [
     module.vpc.private_subnets[0],
     module.vpc.private_subnets[1]
   ]
-  //ami_id           = data.aws_ami.app_ami.id
+  key_name = var.key_name
   //load_balancers = [module.clb.load_balancer_dns]
+  env = var.env
 }
 

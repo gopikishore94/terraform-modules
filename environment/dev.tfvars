@@ -3,17 +3,14 @@ public_cidrs           = ["10.0.1.0/24", "10.0.2.0/24"]
 private_cidrs          = ["10.0.11.0/24", "10.0.12.0/24", "10.0.13.0/24"]
 azs                    = ["ap-south-1a", "ap-south-1b"]
 env                    = "dev"
+sg_name                = "ssh_security_group"
+sg_description         = "allow from local"
 public_instance_count  = 1
 private_instance_count = 2
 public_instance_type   = "t2.micro"
 private_instance_type  = "t2.micro"
 key_name               = "mumbai"
-########## SG #########
-sg_name          = "ssh_security_group"
-sg_description   = "allow from local"
-public_from_port = 22
-public_to_port   = 22
-public_protocol  = "tcp"
+
 ########### lb values ##############
 healthy_threshold   = 2
 unhealthy_threshold = 5

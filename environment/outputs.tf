@@ -1,9 +1,6 @@
 output "vpc-id" {
   value = module.vpc.vpc_id
 }
-output "vpc-cidr_blocks" {
-  value = module.vpc.vpc_cidr
-}
 output "public_subnets" {
   value = module.vpc.public_subnets
 }
@@ -14,7 +11,7 @@ output "aws_subnet_azs" {
   value = module.vpc.aws_subnet_azs
 }
 output "security_id" {
-  value = module.public_security_group.security_id
+  value = module.security_group.security_id
 }
 output "public_instance_ids" {
   value = module.ec2.public_instance_ids
