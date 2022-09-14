@@ -14,6 +14,10 @@ sg_description   = "allow from local"
 public_from_port = 22
 public_to_port   = 22
 public_protocol  = "tcp"
+private_from_port = 80
+private_to_port = 80
+private_protocol = "tcp"
+cidr_blocks = ["0.0.0.0/0"]
 ########### lb values ##############
 healthy_threshold   = 2
 unhealthy_threshold = 5

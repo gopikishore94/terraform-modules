@@ -16,6 +16,17 @@ module "public_security_group" {
   from_port      = var.public_from_port
   to_port        = var.public_to_port
   protocol       = var.public_protocol
+  cidr_blocks    = var.cidr_blocks
+}
+module "private_security_group" {
+  source         = "../modules/securitygroup"
+  sg_name        = var.sg_name
+  sg_description = var.sg_description
+  vpc_id         = module.vpc.vpc_id
+  env            = var.env
+  from_port      = var.private_from_port
+  to_port        = var.private_to_port
+  protocol       = var.private_protocol
   cidr_blocks    = [module.vpc.vpc_cidr]
 }
 

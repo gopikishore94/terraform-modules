@@ -41,10 +41,27 @@ variable "sg_name" {
 variable "sg_description" {
   default = ""
 }
-variable "public_from_port" {}
-variable "public_to_port" {}
-variable "public_protocol" {}
-
+variable "public_from_port" {
+  default = ""
+}
+variable "public_to_port" {
+  default = ""
+}
+variable "public_protocol" {
+  default = ""
+}
+variable "private_from_port" {
+  default = ""
+}
+variable "private_to_port" {
+  default = ""
+}
+variable "private_protocol" {
+  default = ""
+}
+variable "cidr_blocks"{
+  default = ""
+}
 ############## lb vars ###############
 variable "target_name" {}
 variable "target_port" {}
