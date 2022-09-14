@@ -10,3 +10,15 @@ variable "vpc_id" {
 variable "env" {
   default = ""
 }
+variable "from_port"{
+  default = ""
+}
+variable "to_port"{
+  default = ""
+}
+variable "protocol" {
+  default = ""
+}
+variable "cidr_blocks"{
+  default = ""
+}
