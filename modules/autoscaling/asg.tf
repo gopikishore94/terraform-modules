@@ -15,7 +15,6 @@ resource "aws_autoscaling_group" "asg" {
   min_size             = var.min_size
   max_size             = var.max_size
   desired_capacity     = var.desired_capacity
-  //availability_zones   = var.availability_zones
   vpc_zone_identifier  = var.vpc_zone_identifier
   //load_balancers      = var.load_balancers
   lifecycle {
