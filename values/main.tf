@@ -77,7 +77,5 @@ module "auto_scaling" {
     module.vpc.private_subnets[0],
     module.vpc.private_subnets[1]
   ]
-  //ami_id           = data.aws_ami.app_ami.id
   //load_balancers = [module.clb.load_balancer_dns]
 }
-
