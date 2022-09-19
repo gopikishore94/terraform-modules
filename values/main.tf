@@ -90,8 +90,4 @@ module "auto_scaling" {
     module.vpc.private_subnets[0],
     module.vpc.private_subnets[1]
   ]
-<<<<<<< HEAD
-=======
-  //load_balancers = [module.clb.load_balancer_dns]
->>>>>>> 25b69315795e083f1868b911eef6c1aa8168c240
 }
