@@ -85,7 +85,7 @@ module "auto_scaling" {
   key_name            = var.key_name
   env                 = var.env
   image_id            = module.ami_module.ami_name_asg_name
-  load_balancers      = [module.clb.tg_arn_name]
+  load_balancers      = [module.clb.tg_arn]
   vpc_zone_identifier = [
     module.vpc.private_subnets[0],
     module.vpc.private_subnets[1]
