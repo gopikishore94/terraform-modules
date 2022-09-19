@@ -25,6 +25,9 @@ output "private_instances_ids" {
 output "target_group_arn" {
   value = module.clb.tg_arn
 }
+output "target_group_name" {
+  value = module.clb.tg_arn_name
+}
 output "target_ids" {
   value = module.clb.target_output_id
 }
@@ -36,4 +39,10 @@ output "load_balancer_dns" {
 }
 output "asg_lc_name" {
   value = module.auto_scaling.launch_configuration_name
+}
+output "launch_configuration_image_id" {
+  value = module.auto_scaling.launch_configuration_image
+}
+output "ami_backup_id" {
+  value = module.ami_module.ami_name_asg_name
 }

@@ -25,4 +25,9 @@ variable "env" {
 variable "vpc_security_group_ids" {
   default = ""
 }
-variable "ami"{}
+variable "ami"{
+  default = ""
+}
+variable "user_data"{
+  default = ""
+}

@@ -9,3 +9,8 @@ variable "unhealthy_threshold" {}
 variable "subnets"{}
 variable "security_groups" {}
 variable "target_id" {}
+variable "load_balancer_type"{}
+variable "aws_lb_name"{}
+variable "aws_lb_type"{
+  type = bool
+}

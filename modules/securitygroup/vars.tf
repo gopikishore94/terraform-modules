@@ -22,3 +22,6 @@ variable "protocol" {
 variable "cidr_blocks"{
   default = ""
 }
+variable "ingress_description"{
+  default = ""
+}
