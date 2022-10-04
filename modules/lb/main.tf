@@ -36,7 +36,7 @@ resource "aws_lb" "test" {
     Environment      = "production"
   }
 }
-resource "aws_lb_target_group_attachment" "my-alb-target-group-attachment1" {
+resource "aws_lb_target_group_attachment" "target_attachment" {
   count            = length(var.target_id)
   target_group_arn = aws_alb_target_group.tg.arn
   target_id        = element(var.target_id, count.index)
