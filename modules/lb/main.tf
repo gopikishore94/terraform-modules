@@ -15,7 +15,7 @@ resource "aws_alb_target_group" "tg" {
     matcher             = "200"  # has to be HTTP 200 or fails
   }
 }
-resource "aws_lb_listener" "my-test-alb-listner" {
+resource "aws_lb_listener" "alb_listner" {
   load_balancer_arn = aws_lb.test.arn
   port              = 80
   protocol          = "HTTP"
