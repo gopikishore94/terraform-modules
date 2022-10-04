@@ -68,7 +68,7 @@ module "clb" {
   security_groups = [module.public_security_group.security_id]
 }
 module "ami_module"{
-  source = "../modules/ami"
+  source              = "../modules/ami"
   ami_name_asg        = var.ami_name_asg
   source_instance_id  = module.ec2.private_instance_ids[0]
   env                 = var.env
