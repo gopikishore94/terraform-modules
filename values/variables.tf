@@ -1,4 +1,4 @@
-variable "region"{}
+variable "region" {}
 variable "vpc_cidr" {}
 variable "env" {}
 variable "public_cidrs" {
@@ -45,7 +45,7 @@ variable "public_sg_description" {
 variable "private_sg_description" {
   default = ""
 }
-variable "ingress_description"{
+variable "ingress_description" {
   default = ""
 }
 variable "public_from_port" {
@@ -75,9 +75,9 @@ variable "target_port" {}
 variable "target_protocol" {}
 variable "healthy_threshold" {}
 variable "unhealthy_threshold" {}
-variable "load_balancer_type"{}
-variable "aws_lb_name"{}
-variable "aws_lb_type"{
+variable "load_balancer_type" {}
+variable "aws_lb_name" {}
+variable "aws_lb_type" {
   type = bool
 }
 ########### asg vars #############
@@ -87,6 +87,6 @@ variable "asg_name" {}
 variable "min_size" {}
 variable "max_size" {}
 variable "desired_capacity" {}
-variable "ami_name_asg"{}
+variable "ami_name_asg" {}
 //variable "source_instance_id"{}
 //variable"availability_zone"{}

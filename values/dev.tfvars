@@ -26,11 +26,11 @@ healthy_threshold   = 2
 unhealthy_threshold = 5
 target_name         = "public-tg"
 target_port         = 80
+target_protocol     = "HTTP"
+load_balancer_type  = "application"
+aws_lb_name         = "testing-lb"
+aws_lb_type         = false
 //target_type         = "instance"
-target_protocol = "HTTP"
-load_balancer_type = "application"
-aws_lb_name = "testing-lb"
-aws_lb_type = false
 
 ####### asg values ##########
 asg_name         = "onlineshop_asg"
@@ -38,4 +38,4 @@ asg_name_lc      = "onlineshop_asg_lc"
 min_size         = 1
 max_size         = 5
 desired_capacity = 2
-ami_name_asg = "AMI from Private_EC2"
+ami_name_asg     = "AMI from Private_EC2"

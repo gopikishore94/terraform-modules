@@ -8,16 +8,16 @@ module "vpc" {
 }
 
 module "public_security_group" {
-  source               = "../modules/securitygroup"
-  sg_name              = var.sg_name
-  sg_description       = var.public_sg_description
-  ingress_description  = var.ingress_description
-  vpc_id               = module.vpc.vpc_id
-  env                  = var.env
-  from_port            = var.public_from_port
-  to_port              = var.public_to_port
-  protocol             = var.public_protocol
-  cidr_blocks          = var.cidr_blocks
+  source              = "../modules/securitygroup"
+  sg_name             = var.sg_name
+  sg_description      = var.public_sg_description
+  ingress_description = var.ingress_description
+  vpc_id              = module.vpc.vpc_id
+  env                 = var.env
+  from_port           = var.public_from_port
+  to_port             = var.public_to_port
+  protocol            = var.public_protocol
+  cidr_blocks         = var.cidr_blocks
 }
 #module "private_security_group" {
 #  source         = "../modules/securitygroup"
@@ -67,25 +67,25 @@ module "clb" {
   ]
   security_groups = [module.public_security_group.security_id]
 }
-module "ami_module"{
-  source              = "../modules/ami"
-  ami_name_asg        = var.ami_name_asg
-  source_instance_id  = module.ec2.private_instance_ids[0]
-  env                 = var.env
+module "ami_module" {
+  source             = "../modules/ami"
+  ami_name_asg       = var.ami_name_asg
+  source_instance_id = module.ec2.private_instance_ids[0]
+  env                = var.env
 }
 module "auto_scaling" {
-  source              = "../modules/autoscaling"
-  depends_on          = [module.ec2]
-  asg_name            = var.asg_name
-  asg_name_lc         = var.asg_name_lc
-  max_size            = var.max_size
-  min_size            = var.min_size
-  desired_capacity    = var.desired_capacity
-  security_groups     = [module.public_security_group.security_id]
-  key_name            = var.key_name
-  env                 = var.env
-  image_id            = module.ami_module.ami_name_asg_name
-  load_balancers      = [module.clb.tg_arn]
+  source           = "../modules/autoscaling"
+  depends_on       = [module.ec2]
+  asg_name         = var.asg_name
+  asg_name_lc      = var.asg_name_lc
+  max_size         = var.max_size
+  min_size         = var.min_size
+  desired_capacity = var.desired_capacity
+  security_groups  = [module.public_security_group.security_id]
+  key_name         = var.key_name
+  env              = var.env
+  image_id         = module.ami_module.ami_name_asg_name
+  load_balancers   = [module.clb.tg_arn]
   vpc_zone_identifier = [
     module.vpc.private_subnets[0],
     module.vpc.private_subnets[1]
